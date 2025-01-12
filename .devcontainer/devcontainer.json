@@ -2,7 +2,7 @@
     "name": "cs-ubuntu-docker-tailscale",
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "runArgs": ["--device=/dev/net/tun", "-e TS_AUTHKEY=${TS_AUTHKEY}"],
-    "postCreateCommand": "echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf && echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf && sudo sysctl -p /etc/sysctl.d/99-tailscale.conf && sudo tailscale up --auth-key=$TS_AUTHKEY --advertise-exit-node",
+    "postCreateCommand": "echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf && echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.d/99-tailscale.conf && sudo sysctl -p /etc/sysctl.d/99-tailscale.conf && sudo tailscale up --auth-key=$TS_AUTHKEY --advertise-exit-node --ssh",
     "features": {
       "ghcr.io/devcontainers/features/sshd:1": { "version":"latest" },
       "ghcr.io/devcontainers/features/docker-in-docker:2": {},
